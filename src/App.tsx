@@ -4,6 +4,8 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { ViewUpdate } from "@codemirror/view";
 import { dracula } from '@uiw/codemirror-theme-dracula';
+import { emailTemplate } from './template/email';
+import { parse } from 'node-html-parser';
 
 function App() {
   const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
@@ -13,14 +15,15 @@ function App() {
 
     if (isIFrame(liveRoom) && liveRoom.contentWindow) {
       liveRoom.contentWindow.document.body.innerHTML = value;
+      console.log(parse(value));
     }
   }, []);
 
   return (
     <div style={{display: 'flex'}}>
-      <div style={{flexBasis: '50%'}}>
+      <div style={{flexBasis: '50%', overflow: 'auto'}}>
         <CodeMirror
-          value="console.log('hello world!');"
+          value={emailTemplate}
           height="1000px"
           extensions={[javascript({ jsx: true })]}
           theme={dracula}
