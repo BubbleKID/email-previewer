@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
@@ -10,14 +10,23 @@ import { parse } from 'node-html-parser';
 function App() {
   const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
     input !== null && input.tagName === 'IFRAME';
-  const onChange = React.useCallback((value: string, viewUpdate: ViewUpdate) => {
+
+  const renderHtml = (emailTemplate: string) => {
     const liveRoom = document.getElementById('live');
 
     if (isIFrame(liveRoom) && liveRoom.contentWindow) {
-      liveRoom.contentWindow.document.body.innerHTML = value;
-      console.log(parse(value));
+      liveRoom.contentWindow.document.body.innerHTML = emailTemplate;
+      console.log(parse(emailTemplate));
     }
+  }
+
+  const onChange = React.useCallback((value: string, viewUpdate: ViewUpdate) => {
+    renderHtml(value);
   }, []);
+
+  useEffect(() => {
+    renderHtml(emailTemplate);
+  }, [])
 
   return (
     <div style={{display: 'flex'}}>
@@ -30,7 +39,7 @@ function App() {
           onChange={onChange}
         />
       </div>
-      <iframe id="live" src="" style={{flexBasis: '50%'}}></iframe>
+      <iframe title="live" id="live" src="" style={{flexBasis: '50%'}}></iframe>
     </div>
   );
 }
