@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import React, { useEffect, useCallback } from 'react';
 import './MainPage.css';
 import CodeMirror from '@uiw/react-codemirror';
@@ -5,7 +7,10 @@ import { javascript } from '@codemirror/lang-javascript';
 import { ViewUpdate } from "@codemirror/view";
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { emailTemplate } from '../template/email';
-import { parse } from 'node-html-parser';
+import { parse } from '../parser/index';
+// import { parse } from 'node-html-parser';
+
+
 import Header from './Header';
 
 function MainPage() {
@@ -32,8 +37,13 @@ function MainPage() {
 
     if (isIFrame(liveRoom) && liveRoom.contentWindow) {
       liveRoom.contentWindow.document.body.innerHTML = emailTemplate;
-      let jObj = parse(emailTemplate, options);
-      console.log(jObj);
+
+      const html = `<div>This is a div</div>`;
+      const node = parse(html);
+
+      // let jObj = parse(emailTemplate, options);
+      console.log(node);
+      
     }
   }, []);
 

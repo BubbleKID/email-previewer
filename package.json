@@ -19,11 +19,14 @@
     "@uiw/codemirror-theme-dracula": "^4.20.4",
     "@uiw/codemirror-theme-okaidia": "^4.20.4",
     "@uiw/react-codemirror": "^4.20.4",
+    "css-select": "^5.1.0",
     "framer-motion": "^10.12.16",
+    "he": "^1.2.0",
+    "node-html-parser": "^6.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
+    "typescript": "^4.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -49,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/he": "^1.2.0"
   }
 }

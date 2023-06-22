@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { Adapter /*, Predicate*/ } from 'css-select/lib/types';
 import HTMLElement from './nodes/html';
 import Node from './nodes/node';

@@ -8,8 +8,8 @@ import HTMLElement from './html';
 export default abstract class Node {
 	abstract nodeType: NodeType;
 	public childNodes = [] as Node[];
-	public range: readonly [number, number];
-	abstract text: string;
+	public range = [-1, -1];
+	public text: string = "";
 	abstract rawText: string;
 	// abstract get rawText(): string;
 	abstract toString(): string;

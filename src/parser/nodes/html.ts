@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { selectAll, selectOne } from 'css-select';
 import he from 'he';
 import arr_back from '../back';
@@ -1025,18 +1027,19 @@ export function base_parse(data: string, options = {} as Partial<Options>) {
 	const element_names = Object.keys(elements);
 	const kBlockTextElements = element_names.map((it) => new RegExp(`^${it}$`, 'i'));
 	const kIgnoreElements = element_names.filter((it) => elements[it]).map((it) => new RegExp(`^${it}$`, 'i'));
-
+	
 	function element_should_be_ignore(tag: string) {
 		return kIgnoreElements.some((it) => it.test(tag));
 	}
-
+	
 	function is_block_text_element(tag: string) {
 		return kBlockTextElements.some((it) => it.test(tag));
 	}
-
+	
 	const createRange = (startPos: number, endPos: number): [number, number] => [startPos - frameFlagOffset, endPos - frameFlagOffset];
+	debugger
 	const root = new HTMLElement(null, {}, '', null, [0, data.length], voidTag, options);
-
+	
 	let currentParent = root;
 	const stack = [root];
 	let lastTextPos = -1;
@@ -1048,7 +1051,7 @@ export function base_parse(data: string, options = {} as Partial<Options>) {
 
 	const dataEndPos = data.length - (frameflag.length + 2);
 	const frameFlagOffset = frameflag.length + 2;
-
+	
 	while ((match = kMarkupPattern.exec(data))) {
 		// Note: Object destructuring here consistently tests as higher performance than array destructuring
 		// eslint-disable-next-line prefer-const
