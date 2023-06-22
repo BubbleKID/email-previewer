@@ -1037,9 +1037,7 @@ export function base_parse(data: string, options = {} as Partial<Options>) {
 	}
 	
 	const createRange = (startPos: number, endPos: number): [number, number] => [startPos - frameFlagOffset, endPos - frameFlagOffset];
-	debugger
 	const root = new HTMLElement(null, {}, '', null, [0, data.length], voidTag, options);
-	
 	let currentParent = root;
 	const stack = [root];
 	let lastTextPos = -1;

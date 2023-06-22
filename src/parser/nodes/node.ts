@@ -9,8 +9,8 @@ export default abstract class Node {
 	abstract nodeType: NodeType;
 	public childNodes = [] as Node[];
 	public range = [-1, -1];
-	public text: string = "";
-	abstract rawText: string;
+	// abstract text: string;
+	// abstract rawText: string;
 	// abstract get rawText(): string;
 	abstract toString(): string;
 	abstract clone(): Node;
@@ -46,5 +46,13 @@ export default abstract class Node {
 	}
 	public set textContent(val: string) {
 		this.rawText = encode(val);
+	}
+	// todo: check this
+	public set text(val: string) {
+		this.text = val;
+	}
+	// todo: check this
+	public set rawText(val: string) {
+		this.rawText = val;
 	}
 }
