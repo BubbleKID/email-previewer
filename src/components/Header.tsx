@@ -55,6 +55,7 @@ export default function Header() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
+            lineHeight={'40px'}
             color={useColorModeValue('gray.800', 'white')}>
             Email Previewer
           </Text>
@@ -143,8 +144,8 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
-      <Select placeholder='Select option'>
-        <option value='outlook-desktop' selected>OutLook Desktop</option>
+      <Select placeholder='Select option' defaultValue='outlook-desktop'>
+        <option value='outlook-desktop'>OutLook Desktop</option>
         <option value='iframe'>iframe</option>
       </Select>
     </Stack>

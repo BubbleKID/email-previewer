@@ -14,6 +14,6 @@ export const emailTemplate = `<!DOCTYPE html>
 	 
 </head>
 <body style="margin:0;padding:0;">
-	 
+	test
 </body>
 </html>`;
