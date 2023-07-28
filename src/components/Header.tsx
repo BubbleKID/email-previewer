@@ -21,7 +21,16 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import { Select } from '@chakra-ui/react'
+import { Select } from '@chakra-ui/react';
+import canIEmailData from '../data/data.json';
+
+export interface Nicenames {
+  family: { [key: string]: string };
+}
+
+export interface CanIEmailData {
+  nicenames: Nicenames;
+}
 
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
@@ -105,6 +114,7 @@ const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  const data: CanIEmailData = canIEmailData;
 
   return (
     <Stack direction={'row'} spacing={4}>
@@ -144,9 +154,8 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
-      <Select placeholder='Select option' defaultValue='outlook-desktop'>
-        <option value='outlook-desktop'>OutLook Desktop</option>
-        <option value='iframe'>iframe</option>
+      <Select placeholder='Select option'>
+        {Object.keys(data.nicenames.family).map(family_key => <option key={family_key} value={family_key}>{data.nicenames.family[family_key]}</option>)}
       </Select>
     </Stack>
   );
