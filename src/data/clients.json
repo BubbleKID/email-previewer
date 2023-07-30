@@ -1,10 +1,6 @@
 {
-  "aol": {
-    "platforms": [
-      "desktop-webmail"
-    ]
-  },
   "gmail": {
+    "nicename": "Gmail",
     "platforms": [
       "desktop-webmail",
       "ios",
@@ -13,6 +9,7 @@
     ]
   },
   "outlook": {
+    "nicename": "Outlook",
     "platforms": [
       "windows",
       "windows-mail",
