@@ -24,7 +24,8 @@ import {
 } from '@chakra-ui/icons';
 import { Select } from '@chakra-ui/react';
 import clientsData from '../data/clients.json';
-import { getClients, getPlatformsByClient } from "../utils/utils";
+import platformsData from '../data/platforms.json';
+import { getClients, getPlatformsByClient, getPlatformNicename, getClientNicename } from "../utils/utils";
 
 export interface Nicenames {
   family: { [key: string]: string };
@@ -121,7 +122,6 @@ const DesktopNav = () => {
   const handleClientSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const platforms = getPlatformsByClient(event.currentTarget.value, clientsData);
     setPlatform(platforms);
-    console.log(platforms)
   };
   const handlePlatformSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     console.log('handlePlatformSelectChange', event.currentTarget.value);
@@ -167,11 +167,11 @@ const DesktopNav = () => {
       ))}
 
       <Select placeholder='Client' onChange={handleClientSelectChange}>
-        {clients.map((client: any) => <option key={client} value={client}>{client}</option>)}
+        {clients.map((client: any) => <option key={client} value={client}>{getClientNicename(client, clientsData)}</option>)}
       </Select>
 
       <Select placeholder='Platform' onChange={handlePlatformSelectChange}>
-        {platforms.map((platform: any) => <option key={platform} value={platform}>{platform}</option>)}
+        {platforms.map((platform: any) => <option key={platform} value={platform}>{getPlatformNicename(platform, platformsData)}</option>)}
       </Select>
     </Stack>
   );

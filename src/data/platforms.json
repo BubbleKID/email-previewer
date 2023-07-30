@@ -1,0 +1,12 @@
+{
+  "desktop-app": "Desktop",
+  "desktop-webmail": "Desktop Webmail",
+  "mobile-webmail": "Mobile Webmail",
+  "webmail": "Webmail",
+  "ios": "iOS",
+  "android": "Android",
+  "windows": "Windows",
+  "macos": "macOS",
+  "windows-mail": "Windows Mail",
+  "outlook-com": "Outlook.com"
+}
