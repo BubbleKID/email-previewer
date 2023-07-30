@@ -1,0 +1,25 @@
+{
+  "aol": {
+    "platforms": [
+      "desktop-webmail"
+    ]
+  },
+  "gmail": {
+    "platforms": [
+      "desktop-webmail",
+      "ios",
+      "android",
+      "mobile-webmail"
+    ]
+  },
+  "outlook": {
+    "platforms": [
+      "windows",
+      "windows-mail",
+      "macos",
+      "outlook-com",
+      "ios",
+      "android"
+    ]
+  }
+}

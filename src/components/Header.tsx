@@ -1,3 +1,4 @@
+import { ChangeEvent, useState } from 'react';
 import {
   Box,
   Flex,
@@ -22,7 +23,8 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 import { Select } from '@chakra-ui/react';
-import canIEmailData from '../data/data.json';
+import clientsData from '../data/clients.json';
+import { getClients, getPlatformsByClient } from "../utils/utils";
 
 export interface Nicenames {
   family: { [key: string]: string };
@@ -114,7 +116,16 @@ const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-  const data: CanIEmailData = canIEmailData;
+  const [platforms, setPlatform] = useState([]);
+  const clients = getClients(clientsData);
+  const handleClientSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const platforms = getPlatformsByClient(event.currentTarget.value, clientsData);
+    setPlatform(platforms);
+    console.log(platforms)
+  };
+  const handlePlatformSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    console.log('handlePlatformSelectChange', event.currentTarget.value);
+  };
 
   return (
     <Stack direction={'row'} spacing={4}>
@@ -154,8 +165,13 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
-      <Select placeholder='Select option'>
-        {Object.keys(data.nicenames.family).map(family_key => <option key={family_key} value={family_key}>{data.nicenames.family[family_key]}</option>)}
+
+      <Select placeholder='Client' onChange={handleClientSelectChange}>
+        {clients.map((client: any) => <option key={client} value={client}>{client}</option>)}
+      </Select>
+
+      <Select placeholder='Platform' onChange={handlePlatformSelectChange}>
+        {platforms.map((platform: any) => <option key={platform} value={platform}>{platform}</option>)}
       </Select>
     </Stack>
   );
